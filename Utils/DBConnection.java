@@ -58,11 +58,8 @@ public class DBConnection {
         }
     }
     
-    public Connection getConnection() {
-        return this.conn;
-    }
-    
-    public static void populateDatabase() {
-        //CallableStatement statement = conn.prepareCall(jbdcUrl)
+    public static Connection getConnection() {
+        if (conn != null) { return conn; }
+        return startConnection();
     }
 }
