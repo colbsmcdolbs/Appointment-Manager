@@ -5,6 +5,10 @@
  */
 package Utils;
 
+import java.util.HashMap;
+import Interfaces.ILanguageStrings;
+import java.util.Locale;
+
 /**
  *
  * @author colby
@@ -12,6 +16,7 @@ package Utils;
 public class LanguageStrings implements ILanguageStrings {
 
     public static HashMap<String, String> languageStringsMap = null;
+    public static String userLanguage = null;
     
     
     private static void initializeLanguageStrings() {
@@ -25,19 +30,34 @@ public class LanguageStrings implements ILanguageStrings {
         addString("French", "Login", "Connectez-vous au Gestionnaire de Rendez-Vous");
 
     }
+    /**
+     * To avoid any muckups, this will automatically set the system language to English.
+     */
+    private static void initializeUserLanguage() {
+        
+        switch(Locale.getDefault().getLanguage()) {
+            case "fr":
+                userLanguage = "French";
+                break;
+            case "sp":
+                userLanguage = "Spanish";
+                break;
+            default:
+                userLanguage = "English";
+                break;
+        }
+    }
 
     // So we don't have to worry about initializing, it will automatically
     // do it for us.
-    public static String getString(String language, String appString) {
+    public static String getString(String appString) {
         if (languageStringsMap == null) initializeLanguageStrings();
+        if (userLanguage == null) initializeUserLanguage();
 
-        return languageStringsMap.get(language + "_" + appString);
+        return languageStringsMap.get(userLanguage + "_" + appString);
     }
 
-    private void addString(String language, String appString, String phrase) {
+    private static void addString(String language, String appString, String phrase) {
         languageStringsMap.put(language + "_" + appString, phrase);
     }
-
-
-
 }
