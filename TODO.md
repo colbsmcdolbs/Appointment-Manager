@@ -62,4 +62,6 @@ to far into it.
 
 ## Logs
 
+[ ] Make an interrrrrface
+[ ] Log function is called immediately after a successful login.
 [ ] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
