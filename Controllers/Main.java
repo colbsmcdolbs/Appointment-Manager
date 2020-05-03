@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GUI;
+package Controllers;
 
 import Utils.DBConnection;
 import javafx.application.Application;
@@ -16,11 +11,11 @@ import javafx.stage.Stage;
  *
  * @author colby
  */
-public class AppointmentManager extends Application {
+public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/LoginView.fxml"));
         
         Scene scene = new Scene(root);
         

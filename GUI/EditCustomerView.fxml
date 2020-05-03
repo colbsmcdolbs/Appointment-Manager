@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddCustomerViewController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditCustomerViewController">
    <children>
       <HBox layoutX="7.0" layoutY="7.0" prefHeight="48.0" prefWidth="367.0">
          <children>
-            <Label alignment="CENTER" prefHeight="48.0" prefWidth="194.0" text="Add Customer">
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="194.0" text="Modify Customer">
                <font>
                   <Font size="18.0" />
                </font>
@@ -184,7 +184,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="379.0" layoutY="388.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" text="Add Customer">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" text="Modify Customer">
                <font>
                   <Font size="14.0" />
                </font>

@@ -1,40 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Utils;
 
 import java.util.HashMap;
-import Interfaces.ILanguageStrings;
 import java.util.Locale;
 
 /**
  *
  * @author colby
  */
-public class LanguageStrings implements ILanguageStrings {
+public class LanguageManager {
 
-    public static HashMap<String, String> languageStringsMap = null;
-    public static String userLanguage = null;
+    private static HashMap<String, String> languageStringsMap = null;
+    private static String userLanguage = null;
     
     
     private static void initializeLanguageStrings() {
+        
+        languageStringsMap = new HashMap<>();
         //English App Phrases
-        addString("English", "Login", "Login to Appointment Manager");
+        addString("English", "LoginWelcome", "Welcome to Appointment Manager");
+        addString("English", "Login", "Login");
+        addString("English", "Cancel", "Cancel");
+        addString("English", "Username", "Username");
+        addString("English", "Password", "Password");
+        addString("English", "AllFieldsError", "Error: All fields are required");
+        addString("English", "WrongUsernamePassError", "Error: Username or Password Incorrect");
 
         //Spanish App Phrases
-        addString("Spanish", "Login", "Inicie sesión en el Administrador de Citas");
+        addString("Spanish", "LoginWelcome", "Inicie sesión en el Administrador de Citas");
 
         //French App Phrases
-        addString("French", "Login", "Connectez-vous au Gestionnaire de Rendez-Vous");
+        addString("French", "LoginWelcome", "Connectez-vous au Gestionnaire de Rendez-Vous");
 
     }
     /**
      * To avoid any muckups, this will automatically set the system language to English.
      */
     private static void initializeUserLanguage() {
-        
         switch(Locale.getDefault().getLanguage()) {
             case "fr":
                 userLanguage = "French";

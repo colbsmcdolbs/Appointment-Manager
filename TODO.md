@@ -2,27 +2,21 @@
 
 ## GUI
 
-[ ] Login Screen
-[ ] Main Screen/Initial Monthly Calendar view
+[X] Login Screen
+[X] Dashboard
     - Options to access the following screens
-[ ] Reports
-[ ] Alerts [?]
+[X] Reports
 [ ] Add Appointment
 [ ] Edit Appointment
-[ ] Add Customer
-[ ] Edit Customer
-[ ] Settings(?) [Optional: You could use it to change the language though]
-[ ] Add some diddly-dang styling, make it look nice
+[X] Add Customer
+[X] Edit Customer
+[X] Add some diddly-dang styling, make it look nice
 
 
 ## Models
 
-Be sure to look this one up to make sure you did it right, wifey cut the internet
-on ya.
-
 [X] Create all of the models for each table on the database
-[ ] Verify that these models will actually be able to work with DB data
-[ ] Verify that the TimeStamp and DATETIME shenanigans will work.
+[X] Verify that these models will actually be able to work with DB data
 
 
 ## Database Controllers
@@ -31,6 +25,7 @@ on ya.
 [ ] Customer CRUD Interface
 [ ] Appointment CRUD Class
 [ ] Appointment CRUD Interface
+[ ] User verification for login
 
 
 ## Calendars
@@ -38,7 +33,7 @@ on ya.
 You really should review the notes on the course chatter on this before you get
 to far into it.
 
-[ ] Probably a lot, not too sure yet.
+[ ] Just make a table view for both. Super simple.
 
 ## TimeZone Nonsense
 
@@ -60,8 +55,13 @@ to far into it.
 
 [ ] Create the three reports that are requested of you
 
+
 ## Logs
 
-[ ] Make an interrrrrface
 [ ] Log function is called immediately after a successful login.
 [ ] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
+
+
+## Alerts
+
+[ ] Make them as the spec asks you to

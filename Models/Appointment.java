@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 import java.util.Date;
@@ -21,12 +16,8 @@ public class Appointment {
     private String url;
     private Date start;
     private Date end;
-    private Date createDate;
-    private String createdBy;
-    private Date lastUpdate;
-    private String lastUpdateBy;
 
-    public Appointment(int appointmentId, int customerId, int userId, String title, String description, String location, String contact, String type, String url, Date start, Date end, Date createDate, String createdBy, Date lastUpdate, String lastUpdateBy) {
+    public Appointment(int appointmentId, int customerId, int userId, String title, String description, String location, String contact, String type, String url, Date start, Date end) {
         this.appointmentId = appointmentId;
         this.customerId = customerId;
         this.userId = userId;
@@ -38,10 +29,6 @@ public class Appointment {
         this.url = url;
         this.start = start;
         this.end = end;
-        this.createDate = createDate;
-        this.createdBy = createdBy;
-        this.lastUpdate = lastUpdate;
-        this.lastUpdateBy = lastUpdateBy;
     }
 
     public int getAppointmentId() {
@@ -130,21 +117,5 @@ public class Appointment {
 
     public void setEnd(Date end) {
         this.end = end;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public String getLastUpdateBy() {
-        return lastUpdateBy;
     }
 }
