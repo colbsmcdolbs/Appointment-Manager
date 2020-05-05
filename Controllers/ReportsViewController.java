@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
  *
  * @author colby
  */
-public class ReportsViewController implements Initializable {
+public class ReportsViewController extends BaseController implements Initializable {
 
     /**
      * Initializes the controller class.

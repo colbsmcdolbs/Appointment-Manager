@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Return to Dashboard" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" onAction="#returnToDashboard" text="Return to Dashboard" />
          </children>
       </HBox>
       <HBox layoutX="182.0" layoutY="55.0" prefHeight="331.0" prefWidth="429.0">

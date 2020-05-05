@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
  *
  * @author colby
  */
-public class CalenderViewController implements Initializable {
+public class CalenderViewController extends BaseController implements Initializable {
 
     /**
      * Initializes the controller class.

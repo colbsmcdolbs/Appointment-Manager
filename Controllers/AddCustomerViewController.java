@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
  *
  * @author colby
  */
-public class AddCustomerViewController implements Initializable {
+public class AddCustomerViewController extends BaseController implements Initializable {
 
     /**
      * Initializes the controller class.

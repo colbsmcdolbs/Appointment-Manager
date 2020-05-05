@@ -22,7 +22,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Return to Dashboard" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" onAction="#returnToDashboard" text="Return to Dashboard" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="151.0" layoutY="70.0" prefHeight="310.0" prefWidth="310.0">

@@ -65,7 +65,7 @@ public class LoginViewController implements Initializable {
         window.show();
     }
 
-    private boolean attemptLogin() {
+    private boolean attemptLogin() throws IOException {
         String username = this.UsernameTextField.getText();
         String password = this.PasswordTextField.getText();
         this.ErrorLabel.setText("");

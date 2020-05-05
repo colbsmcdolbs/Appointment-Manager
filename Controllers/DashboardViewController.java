@@ -1,5 +1,6 @@
 package Controllers;
 
+import Utils.SessionManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -20,12 +24,13 @@ import javafx.stage.Stage;
  */
 public class DashboardViewController implements Initializable {
     
-    @FXML Rectangle addCustomerRect = new Rectangle();
+    @FXML StackPane addCustomerStackPane = new StackPane();
     @FXML Rectangle editCustomerRect = new Rectangle();
     @FXML Rectangle addApptRect = new Rectangle();
     @FXML Rectangle editApptRect = new Rectangle();
     @FXML Rectangle reportsRect = new Rectangle();
     @FXML Rectangle calendarRect = new Rectangle();
+    @FXML Button logOutButton = new Button();
 
     /**
      * Initializes the controller class.
@@ -36,7 +41,7 @@ public class DashboardViewController implements Initializable {
     }    
     
     @FXML
-    private void changeSceneAddAppointment(ActionEvent event) throws IOException {
+    private void changeSceneAddAppointment(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/AddAppointmentView.fxml"));
         Parent addProductParent = loader.load();
@@ -47,7 +52,7 @@ public class DashboardViewController implements Initializable {
     }
     
     @FXML
-    private void changeSceneEditAppointment(ActionEvent event) throws IOException {
+    private void changeSceneEditAppointment(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/EditAppointmentView.fxml"));
         Parent addProductParent = loader.load();
@@ -58,7 +63,7 @@ public class DashboardViewController implements Initializable {
     }
     
     @FXML
-    private void changeSceneAddCustomer(ActionEvent event) throws IOException {
+    private void changeSceneAddCustomer(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/AddCustomerView.fxml"));
         Parent addProductParent = loader.load();
@@ -69,7 +74,7 @@ public class DashboardViewController implements Initializable {
     }
     
     @FXML
-    private void changeSceneEditCustomer(ActionEvent event) throws IOException {
+    private void changeSceneEditCustomer(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/EditCustomerView.fxml"));
         Parent addProductParent = loader.load();
@@ -80,7 +85,7 @@ public class DashboardViewController implements Initializable {
     }
     
     @FXML
-    private void changeSceneViewCalendar(ActionEvent event) throws IOException {
+    private void changeSceneViewCalendar(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/CalenderView.fxml"));
         Parent addProductParent = loader.load();
@@ -91,9 +96,21 @@ public class DashboardViewController implements Initializable {
     }
     
     @FXML
-    private void changeSceneReports(ActionEvent event) throws IOException {
+    private void changeSceneReports(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/ReportsView.fxml"));
+        Parent addProductParent = loader.load();
+        Scene addProductScene = new Scene(addProductParent);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(addProductScene);
+        window.show();
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+        SessionManager.destroySession();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/LoginView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

@@ -119,11 +119,11 @@ to far into it.
 
 ## Logs
 
-[ ] Log function is called immediately after a successful login.
+[X] Log function is called immediately after a successful login.
 
-[ ] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
+[X] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
 
 
 ## Alerts
 
-[ ] Make them as the spec asks you to
+[] Make them as the spec asks you to
