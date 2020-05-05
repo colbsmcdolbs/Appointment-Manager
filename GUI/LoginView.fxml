@@ -66,7 +66,7 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutY="272.0" prefHeight="25.0" prefWidth="256.0">
                      <children>
-                        <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#attemptLogin">
+                        <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#changeSceneDashboard">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
@@ -91,7 +91,7 @@
                      <children>
                         <Label fx:id="ErrorLabel" alignment="CENTER" prefHeight="48.0" prefWidth="252.0" textFill="RED">
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="System" size="14.0" />
                            </font>
                         </Label>
                      </children>

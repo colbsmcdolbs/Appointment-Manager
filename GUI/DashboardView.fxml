@@ -94,7 +94,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#cc00dd" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                  <Rectangle fx:id="addCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#cc00dd" height="150.0" onMouseClicked="#changeSceneAddCustomer" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Customer" textAlignment="CENTER" wrappingWidth="108.89453125">
                      <font>
                         <Font size="20.0" />
@@ -107,7 +107,7 @@
             </StackPane>
             <StackPane layoutX="238.0" layoutY="10.0" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#00ccbb" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
+                  <Rectangle fx:id="editCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#00ccbb" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>

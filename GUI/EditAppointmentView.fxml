@@ -1,11 +1,241 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditAppointmentViewController">
-    
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditAppointmentViewController">
+   <children>
+      <HBox layoutX="7.0" layoutY="7.0" prefHeight="48.0" prefWidth="367.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="194.0" text="Edit Appointment">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Return to Dashboard" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Title">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="116.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Description:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="130.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Location:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="141.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Contact:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="170.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Type:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="URL:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="Start:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label text="End:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="216.0" prefHeight="0.0" prefWidth="289.0">
+               <children>
+                  <Label textFill="RED">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="325.0" layoutY="70.0" prefHeight="310.0" prefWidth="272.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="85.0" text="Customer">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView prefHeight="304.0" prefWidth="272.0">
+              <columns>
+                <TableColumn prefWidth="271.0" text="C1" />
+              </columns>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="379.0" layoutY="388.0" prefHeight="48.0" prefWidth="192.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" text="Edit Appointment">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

@@ -5,14 +5,20 @@
 [X] Login Screen
 
 [X] Dashboard
+
+[X] Calendar View duHHHHH
+
+[ ] Display all Customers as a popup and allow the user to pick which one they want to edit
+
+[ ] Same for the appointments
     
 - Options to access the following screens
 
 [X] Reports
 
-[ ] Add Appointment
+[X] Add Appointment
 
-[ ] Edit Appointment
+[X] Edit Appointment
 
 [X] Add Customer
 
@@ -28,6 +34,44 @@
 [X] Verify that these models will actually be able to work with DB data
 
 
+## Controllers
+
+
+### Login Controller
+
+[X] Done
+
+
+### Dashboard Controller
+
+[ ] Done
+
+
+### Add Customer Controller
+
+[ ] Done
+
+
+### Edit Customer Controller
+
+[ ] Done
+
+
+### Add Appt Controller
+
+[ ] Done
+
+
+### Edit Appt Controller
+
+[ ] Done
+
+
+### View Calendar Controller
+
+[ ] Done
+
+
 ## Database Controllers
 
 [ ] Customer CRUD Class
@@ -38,7 +82,7 @@
 
 [ ] Appointment CRUD Interface
 
-[ ] User verification for login
+[X] User verification for login
 
 
 ## Calendars

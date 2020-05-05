@@ -1,5 +1,9 @@
 package Controllers;
 
+import DAO.UserDao;
+import Models.User;
+import Utils.Logger;
+import Utils.SessionManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -7,7 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import Utils.LanguageManager;
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -38,9 +49,23 @@ public class LoginViewController implements Initializable {
         this.LoginButton.setText(LanguageManager.getString("Login"));
         this.CancelButton.setText(LanguageManager.getString("Cancel"));
     }
-
+    
     @FXML
-    private void attemptLogin() {
+    private void changeSceneDashboard(ActionEvent event) throws IOException {
+        if(attemptLogin() == false) {
+            return;
+        }
+        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/DashboardView.fxml"));
+        Parent addProductParent = loader.load();
+        Scene addProductScene = new Scene(addProductParent);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(addProductScene);
+        window.show();
+    }
+
+    private boolean attemptLogin() {
         String username = this.UsernameTextField.getText();
         String password = this.PasswordTextField.getText();
         this.ErrorLabel.setText("");
@@ -48,13 +73,20 @@ public class LoginViewController implements Initializable {
         if(username.isEmpty() || password.isEmpty())
         {
             this.ErrorLabel.setText(LanguageManager.getString("AllFieldsError"));
-            return;
+            return false;
         }
         
-        // 1. Verify User exists in the database
-        // 2. If not, return error, edit error label and log as failed login
-        // 3. If yes, set sessionuser to this new user, log as success
-        // 4. Change scene to the DASHBOARD
+        User attempted = UserDao.findUser(username, password);
+        
+        if (attempted == null) {
+            this.ErrorLabel.setText(LanguageManager.getString("WrongUsernamePassError"));
+            Logger.loginFailure(username);
+            return false;
+        }
+        
+        SessionManager.setSessionUser(attempted);
+        Logger.loginSuccess(username);
+        return true;
     }
     
     @FXML
