@@ -44,7 +44,7 @@
 
 ### Dashboard Controller
 
-[ ] Done
+[X] Done
 
 
 ### Add Customer Controller
@@ -74,13 +74,9 @@
 
 ## Database Controllers
 
-[ ] Customer CRUD Class
-
-[ ] Customer CRUD Interface
+[X] Customer CRUD Class
 
 [ ] Appointment CRUD Class
-
-[ ] Appointment CRUD Interface
 
 [X] User verification for login
 
@@ -99,7 +95,7 @@ to far into it.
 
 [ ] Probably a lot, not too sure yet.
 
-[ ] When making an appointment, translate time to UTC
+[X] When making an appointment, translate time to UTC
 
 [ ] When displaying appointments, translate times from UTC to local
 
