@@ -92,6 +92,21 @@ public class CustomerDao {
         }
     }
     
+    public static boolean verifyAddressExists(Address addressObject) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "SELECT * FROM address WHERE address='"+ addressObject.getAddress1() +"', address2='"+ addressObject.getAddress2() +
+                                    "', cityId="+ addressObject.getCityId() +", postalCode='"+ addressObject.getPostalCode() +"', phone='"+ addressObject.getPhoneNumber() +"';";
+            ResultSet addressResult = connection.executeQuery(customerQuery);
+            
+            return addressResult.next();
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
     public static Address getAddressById(int addressId) {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
