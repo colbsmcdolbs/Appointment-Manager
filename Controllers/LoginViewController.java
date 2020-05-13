@@ -57,7 +57,7 @@ public class LoginViewController implements Initializable {
         }
         
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/DashboardView.fxml"));
+        loader.setLocation(getClass().getResource("/Views/DashboardView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

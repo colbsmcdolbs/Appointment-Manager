@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" onAction="#returnToDashboard" text="Return to Dashboard" />
+            <Button alignment="CENTER" mnemonicParsing="false" fx:id="exitButton" onAction="#returnToDashboard" prefHeight="25.0" prefWidth="134.0" text="Return to Dashboard" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">
@@ -36,7 +36,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="customerNameTextField">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -56,7 +56,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="addressTextField">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -76,7 +76,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="address2TextField">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -99,7 +99,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="postalCodeTextField">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -122,7 +122,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="phoneTextField">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -140,7 +140,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="216.0" prefHeight="0.0" prefWidth="289.0">
                <children>
-                  <Label textFill="RED">
+                  <Label fx:id="ErrorLabel" textFill="RED">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
@@ -155,36 +155,27 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="339.0" layoutY="70.0" prefHeight="310.0" prefWidth="272.0">
+      <VBox alignment="CENTER" layoutX="294.0" layoutY="70.0" prefHeight="310.0" prefWidth="317.0">
          <children>
             <Label alignment="CENTER" prefHeight="20.0" prefWidth="47.0" text="City">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TableView prefHeight="108.0" prefWidth="272.0">
+            <TableView fx:id="cityTable" prefHeight="228.0" prefWidth="317.0">
               <columns>
-                <TableColumn prefWidth="271.0" text="C1" />
+                <TableColumn fx:id="cityIdColumn" prefWidth="59.0" text="City ID" />
+                <TableColumn fx:id="cityNameColumn" prefWidth="220.0" text="City Name" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </TableView>
-            <Label alignment="CENTER" prefHeight="20.0" prefWidth="79.0" text="Country" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TableView prefHeight="114.0" prefWidth="272.0">
-              <columns>
-                <TableColumn prefWidth="271.0" text="C1" />
-              </columns>
-            </TableView>
          </children>
       </VBox>
       <HBox alignment="CENTER" layoutX="379.0" layoutY="388.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" text="Add Customer">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#addCustomer" prefHeight="49.0" prefWidth="131.0" text="Add Customer">
                <font>
                   <Font size="14.0" />
                </font>

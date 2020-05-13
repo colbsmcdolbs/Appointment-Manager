@@ -49,7 +49,7 @@
 
 ### Add Customer Controller
 
-[ ] Done
+[X] Done
 
 
 ### Edit Customer Controller
@@ -76,7 +76,7 @@
 
 [X] Customer CRUD Class
 
-[ ] Appointment CRUD Class
+[X] Appointment CRUD Class
 
 [X] User verification for login
 

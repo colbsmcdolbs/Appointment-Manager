@@ -18,7 +18,7 @@ public class BaseController {
     @FXML
     private void returnToDashboard(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/DashboardView.fxml"));
+        loader.setLocation(getClass().getResource("/Views/DashboardView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

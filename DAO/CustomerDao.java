@@ -62,6 +62,20 @@ public class CustomerDao {
         }
     }
     
+    public static boolean verifyCustomerExists(Customer customer) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "SELECT * FROM customer WHERE customerName='"+ customer.getCustomerName() +"' AND addressId="+ customer.getAddressId() +";";
+            ResultSet customerResult = connection.executeQuery(customerQuery);
+            
+            return customerResult.next();
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
     public static boolean updateCustomerById(Customer customer, User user) {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
@@ -84,7 +98,8 @@ public class CustomerDao {
             String createCustomerQuery = "INSERT INTO customer (customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES" +
                                         "('" + customer.getCustomerName() + "'," + customer.getAddressId() + "," + 1 + ",'" + currentSQLTime + "','" + createUserName + 
                                         "','" + currentSQLTime + "','" + createUserName + "');"; 
-            return connection.execute(createCustomerQuery);
+            connection.execute(createCustomerQuery);
+            return true;
         }
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());
@@ -95,8 +110,8 @@ public class CustomerDao {
     public static boolean verifyAddressExists(Address addressObject) {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
-            String customerQuery = "SELECT * FROM address WHERE address='"+ addressObject.getAddress1() +"', address2='"+ addressObject.getAddress2() +
-                                    "', cityId="+ addressObject.getCityId() +", postalCode='"+ addressObject.getPostalCode() +"', phone='"+ addressObject.getPhoneNumber() +"';";
+            String customerQuery = "SELECT * FROM address WHERE address='"+ addressObject.getAddress1() +"' AND address2='"+ addressObject.getAddress2() +
+                                    "' AND cityId="+ addressObject.getCityId() +" AND postalCode='"+ addressObject.getPostalCode() +"' AND phone='"+ addressObject.getPhoneNumber() +"';";
             ResultSet addressResult = connection.executeQuery(customerQuery);
             
             return addressResult.next();
@@ -104,6 +119,24 @@ public class CustomerDao {
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());
             return false;
+        }
+    }
+    
+    public static int getAddressId(Address addressObject) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "SELECT * FROM address WHERE address='"+ addressObject.getAddress1() +"' AND address2='"+ addressObject.getAddress2() +
+                                    "' AND cityId="+ addressObject.getCityId() +" AND postalCode='"+ addressObject.getPostalCode() +"' AND phone='"+ addressObject.getPhoneNumber() +"';";
+            ResultSet addressResult = connection.executeQuery(customerQuery);
+            
+            if(addressResult.next()) {
+                return addressResult.getInt("addressId");
+            }
+            return -1;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return -1;
         }
     }
     
