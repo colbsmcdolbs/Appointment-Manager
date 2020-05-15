@@ -76,6 +76,20 @@ public class CustomerDao {
         }
     }
     
+    public static boolean deleteCustomerById(int customerId) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "DELETE FROM customer WHERE customerId="+ customerId +";";
+            connection.execute(customerQuery);
+            
+            return true;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
     public static boolean updateCustomerById(Customer customer, User user) {
         try {
             Statement connection = DBConnection.getConnection().createStatement();

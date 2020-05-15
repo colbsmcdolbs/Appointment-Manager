@@ -54,7 +54,7 @@ public class DashboardViewController implements Initializable {
     @FXML
     private void changeSceneEditAppointment(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Views/EditAppointmentView.fxml"));
+        loader.setLocation(getClass().getResource("/Views/AllAppointmentView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -76,7 +76,7 @@ public class DashboardViewController implements Initializable {
     @FXML
     private void changeSceneEditCustomer(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Views/EditCustomerView.fxml"));
+        loader.setLocation(getClass().getResource("/Views/AllCustomerView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

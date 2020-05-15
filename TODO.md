@@ -2,36 +2,36 @@
 
 ## GUI
 
-[X] Login Screen
+- [X] Login Screen
 
-[X] Dashboard
+- [X] Dashboard
 
-[X] Calendar View duHHHHH
+- [X] Calendar View duHHHHH
 
-[ ] Display all Customers as a popup and allow the user to pick which one they want to edit
+- [X] Display all Customers as a popup and allow the user to pick which one they want to edit
 
-[ ] Same for the appointments
+- [ ] Same for the appointments
     
 - Options to access the following screens
 
-[X] Reports
+- [X] Reports
 
-[X] Add Appointment
+- [X] Add Appointment
 
-[X] Edit Appointment
+- [X] Edit Appointment
 
-[X] Add Customer
+- [X] Add Customer
 
-[X] Edit Customer
+- [X] Edit Customer
 
-[X] Add some diddly-dang styling, make it look nice
+- [X] Add some diddly-dang styling, make it look nice
 
 
 ## Models
 
-[X] Create all of the models for each table on the database
+- [X] Create all of the models for each table on the database
 
-[X] Verify that these models will actually be able to work with DB data
+- [X] Verify that these models will actually be able to work with DB data
 
 
 ## Controllers
@@ -39,46 +39,51 @@
 
 ### Login Controller
 
-[X] Done
+- [X] Done
 
 
 ### Dashboard Controller
 
-[X] Done
+- [X] Done
 
 
 ### Add Customer Controller
 
-[X] Done
+- [X] Done
 
 
 ### Edit Customer Controller
 
-[ ] Done
+- [X] Done
 
 
 ### Add Appt Controller
 
-[ ] Done
+- [ ] Done
 
 
 ### Edit Appt Controller
 
-[ ] Done
+- [ ] Done
 
 
 ### View Calendar Controller
 
-[ ] Done
+- [ ] Done
+
+
+### Reports Controller
+
+- [ ] Done
 
 
 ## Database Controllers
 
-[X] Customer CRUD Class
+- [X] Customer CRUD Class
 
-[X] Appointment CRUD Class
+- [X] Appointment CRUD Class
 
-[X] User verification for login
+- [X] User verification for login
 
 
 ## Calendars
@@ -86,40 +91,40 @@
 You really should review the notes on the course chatter on this before you get
 to far into it.
 
-[ ] Just make a table view for both. Super simple.
+- [ ] Just make a table view for both. Super simple.
 
 ## TimeZone Nonsense
 
 You really should review the notes on the course chatter on this before you get
 to far into it.
 
-[ ] Probably a lot, not too sure yet.
+- [ ] Probably a lot, not too sure yet.
 
-[X] When making an appointment, translate time to UTC
+- [X] When making an appointment, translate time to UTC
 
-[ ] When displaying appointments, translate times from UTC to local
+- [ ] When displaying appointments, translate times from UTC to local
 
 
 
 ## Multi-Language Support
 
-[X] Initial setup of static class
+- [X] Initial setup of static class
 
-[ ] Once you have the GUI all ready, add in all the strings into the Map
+- [ ] Once you have the GUI all ready, add in all the strings into the Map
 
 
 ## Reports
 
-[ ] Create the three reports that are requested of you
+- [ ] Create the three reports that are requested of you
 
 
 ## Logs
 
-[X] Log function is called immediately after a successful login.
+- [X] Log function is called immediately after a successful login.
 
-[X] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
+- [X] Write to a plaintext file, that outputs in the "log" folder, user with timestamp
 
 
 ## Alerts
 
-[] Make them as the spec asks you to
+- [] Make them as the spec asks you to

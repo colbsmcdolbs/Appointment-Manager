@@ -88,6 +88,19 @@ public class AppointmentDao {
         }
     }
     
+    public static boolean deleteAppointmentById(int appointmentId) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String appointmentQuery = "DELETE FROM appointment WHERE appointmentId="+ appointmentId +";";
+            connection.execute(appointmentQuery);
+            return true;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
     public static boolean updateAppointment(Appointment appointment, User user) {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
@@ -98,7 +111,8 @@ public class AppointmentDao {
                                         "', contact='"+ appointment.getContact() +"', type='"+ appointment.getType() +"', url='"+ appointment.getUrl() +
                                         "', start='"+ appointment.getStart()+"', end='"+ appointment.getEnd()+"', lastUpdate='"+ currentUtcTime +
                                         "', lastUpdateBy='"+ user.getUserName() +"' WHERE appointmentId="+ appointment.getAppointmentId() +";";
-            return connection.execute(appointmentQuery);
+            connection.execute(appointmentQuery);
+            return true;
         }
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());
@@ -112,7 +126,8 @@ public class AppointmentDao {
             String currentUtcTime = TimeFunctions.getCurrentDateTimeUTCForDatabase();
             String appointmentQuery = "INSERT INTO appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createBy, lastUpdate, lastUpdateBy)"
                                     + " VALUES ("+ appointment.getCustomerId()+", "+ user.getUserId() +", '"+ appointment.getTitle() +"', '"+ appointment.getDescription() +"', '"+ appointment.getLocation() +"', '"+ appointment.getContact() +"', '"+ appointment.getType() +"', '"+ appointment.getUrl() +"', '"+ appointment.getStart() +"', '"+ appointment.getEnd() +"', '"+ currentUtcTime +"', '"+ user.getUserName() +"', '"+ currentUtcTime +"', '"+ user.getUserName() +"');";
-            return connection.execute(appointmentQuery);
+            connection.execute(appointmentQuery);
+            return true;
         }
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());
