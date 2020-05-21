@@ -17,16 +17,16 @@ public class Appointment {
     private String start;
     private String end;
 
-    public Appointment(int appointmentId, int customerId, int userId, String title, String description, String location, String contact, String type, String url, String start, String end) {
+    public Appointment(int appointmentId, int customerId, int userId, String location, String contact, String type, String start, String end) {
         this.appointmentId = appointmentId;
         this.customerId = customerId;
         this.userId = userId;
-        this.title = title;
-        this.description = description;
+        this.title = "Wealth Management Appointment";
+        this.description = "An appointment with our wealth management services.";
         this.location = location;
         this.contact = contact;
         this.type = type;
-        this.url = url;
+        this.url = "AppointmentManagerApplication";
         this.start = start;
         this.end = end;
     }

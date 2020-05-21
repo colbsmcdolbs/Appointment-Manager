@@ -34,15 +34,12 @@ public class AppointmentDao {
                 int appointmentId = appointmentResult.getInt("appointmentId");
                 int custId = appointmentResult.getInt("customerId");
                 int userId = appointmentResult.getInt("userId");
-                String title = appointmentResult.getString("title");
-                String description = appointmentResult.getString("description");
                 String location = appointmentResult.getString("location");
                 String contact = appointmentResult.getString("contact");
                 String type = appointmentResult.getString("type");
-                String url = appointmentResult.getString("url");
                 String start = appointmentResult.getString("start");
                 String end = appointmentResult.getString("end");
-                Appointment appointment = new Appointment(appointmentId, custId, userId, title, description, location, contact, type, url, start, end);
+                Appointment appointment = new Appointment(appointmentId, custId, userId, location, contact, type, start, end);
                 appointmentList.add(appointment);
             }
             
@@ -68,15 +65,12 @@ public class AppointmentDao {
             if(appointmentResult.next()) {
                 int custId = appointmentResult.getInt("customerId");
                 int userId = appointmentResult.getInt("userId");
-                String title = appointmentResult.getString("title");
-                String description = appointmentResult.getString("description");
                 String location = appointmentResult.getString("location");
                 String contact = appointmentResult.getString("contact");
                 String type = appointmentResult.getString("type");
-                String url = appointmentResult.getString("url");
                 String start = appointmentResult.getString("start");
                 String end = appointmentResult.getString("end");
-                Appointment appointment = new Appointment(appointmentId, custId, userId, title, description, location, contact, type, url, start, end);
+                Appointment appointment = new Appointment(appointmentId, custId, userId, location, contact, type, start, end);
                 return appointment;
             }
             
@@ -124,10 +118,25 @@ public class AppointmentDao {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
             String currentUtcTime = TimeFunctions.getCurrentDateTimeUTCForDatabase();
-            String appointmentQuery = "INSERT INTO appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createBy, lastUpdate, lastUpdateBy)"
+            String appointmentQuery = "INSERT INTO appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy)"
                                     + " VALUES ("+ appointment.getCustomerId()+", "+ user.getUserId() +", '"+ appointment.getTitle() +"', '"+ appointment.getDescription() +"', '"+ appointment.getLocation() +"', '"+ appointment.getContact() +"', '"+ appointment.getType() +"', '"+ appointment.getUrl() +"', '"+ appointment.getStart() +"', '"+ appointment.getEnd() +"', '"+ currentUtcTime +"', '"+ user.getUserName() +"', '"+ currentUtcTime +"', '"+ user.getUserName() +"');";
             connection.execute(appointmentQuery);
             return true;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
+    public static boolean verifyAppointmentExists(Appointment appointment) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "SELECT * FROM appointment WHERE customerId="+ appointment.getCustomerId() +" AND userId="+ appointment.getUserId() +" AND location='"+ appointment.getLocation()+
+                                    "' AND contact='"+ appointment.getContact() +"' AND type='"+ appointment.getType()+"' AND start='"+ appointment.getStart() +"' AND end='"+ appointment.getEnd()+"';";
+            ResultSet customerResult = connection.executeQuery(customerQuery);
+            
+            return customerResult.next();
         }
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());

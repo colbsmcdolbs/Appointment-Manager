@@ -59,7 +59,7 @@
 
 ### Add Appt Controller
 
-- [ ] Done
+- [X] Done
 
 
 ### Edit Appt Controller
@@ -127,4 +127,4 @@ to far into it.
 
 ## Alerts
 
-- [] Make them as the spec asks you to
+- [ ] Make them as the spec asks you to
