@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 /**
@@ -28,7 +29,7 @@ import javafx.stage.Stage;
 public class LoginViewController implements Initializable {
     
     @FXML private TextField UsernameTextField = new TextField();
-    @FXML private TextField PasswordTextField = new TextField();
+    @FXML private PasswordField PasswordTextField = new PasswordField();
     @FXML private Label WelcomeLabel = new Label();
     @FXML private Label UsernameLabel = new Label();
     @FXML private Label PasswordLabel = new Label();

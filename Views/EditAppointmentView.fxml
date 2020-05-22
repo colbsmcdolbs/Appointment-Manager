@@ -2,11 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -16,7 +16,7 @@
    <children>
       <HBox layoutX="7.0" layoutY="7.0" prefHeight="48.0" prefWidth="367.0">
          <children>
-            <Label alignment="CENTER" prefHeight="48.0" prefWidth="194.0" text="Edit Appointment">
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="194.0" text="Modify Appointment">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,51 +25,11 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" onAction="#returnToDashboard" text="Return to Dashboard" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToAptList" fx:id="mainMenuButton" prefHeight="25.0" prefWidth="134.0" text="Return to All Appointments" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="289.0">
-               <children>
-                  <Label text="Title">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="116.0" prefHeight="0.0" prefWidth="289.0">
-               <children>
-                  <Label text="Description:">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="130.0" prefHeight="0.0" prefWidth="289.0">
                <children>
                   <Label text="Location:">
@@ -77,14 +37,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ChoiceBox prefWidth="150.0" fx:id="locationChoiceBox" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -100,14 +53,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ChoiceBox prefWidth="150.0" fx:id="contactChoiceBox" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -123,37 +69,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="0.0" prefWidth="289.0">
-               <children>
-                  <Label text="URL:">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ChoiceBox prefWidth="150.0" fx:id="typeChoiceBox" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -164,12 +80,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="289.0">
                <children>
-                  <Label text="Start:">
+                  <Label prefHeight="17.0" prefWidth="35.0" text="Date:">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <DatePicker />
+                  <DatePicker prefHeight="25.0" prefWidth="179.0" fx:id="appointmentDatePicker" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -180,12 +96,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="0.0" prefWidth="289.0">
                <children>
-                  <Label text="End:">
+                  <Label text="Time:">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <DatePicker />
+                  <ChoiceBox prefWidth="150.0" fx:id="timeChoiceBox" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -196,7 +112,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="216.0" prefHeight="0.0" prefWidth="289.0">
                <children>
-                  <Label textFill="RED">
+                  <Label textFill="RED" fx:id="errorLabel">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
@@ -218,9 +134,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TableView prefHeight="304.0" prefWidth="272.0">
+            <TableView prefHeight="304.0" prefWidth="272.0" fx:id="customerTable" >
               <columns>
-                <TableColumn prefWidth="271.0" text="C1" />
+                <TableColumn prefWidth="271.0" text="Customer Name" fx:id="customerNameColumn" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" />
@@ -230,7 +146,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="379.0" layoutY="388.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" text="Edit Appointment">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" onAction="#modifyAppointment" text="Modify Appointment">
                <font>
                   <Font size="14.0" />
                </font>

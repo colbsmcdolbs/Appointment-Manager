@@ -5,6 +5,7 @@ import DAO.CustomerDao;
 import Models.Appointment;
 import Models.Customer;
 import Utils.SessionManager;
+import Utils.TimeFunctions;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,7 @@ public class AddAppointmentViewController extends BaseController implements Init
     private ObservableList<Customer> customers;
     private ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
     private ObservableList<String> contactList = FXCollections.observableArrayList("Colby Allen", "Madeline Allen", "Miles Allen", "Margaux Allen");
-    private ObservableList<String> locationList = FXCollections.observableArrayList("New York", "Boise", "Delaware");
+    private ObservableList<String> locationList = FXCollections.observableArrayList("New York", "Boise");
     private ObservableList<String> typeList = FXCollections.observableArrayList("Life Insurance", "Estate Planning", "Stock Consultation", "Investing Questions");
     
     /**
@@ -93,12 +94,13 @@ public class AddAppointmentViewController extends BaseController implements Init
             return missingFieldErrorGenerator("Customer");
         }
         
-        int startHour = convertTimeComboToTime(timeChoiceBox.getValue().toString());
+        int startHour = TimeFunctions.convertTimeComboToTime(timeChoiceBox.getValue().toString());
         int endHour = startHour + 1;
         
         Appointment tempAppointment = new Appointment(-1, customerTable.getSelectionModel().getSelectedItem().getCustomerId(), SessionManager.getSessionUser().getUserId(),
                                                         locationChoiceBox.getValue().toString(), contactChoiceBox.getValue().toString(), typeChoiceBox.getValue().toString(),
-                                                        createUtcDateTime(startHour, appointmentDatePicker.getValue().toString()), createUtcDateTime(endHour, appointmentDatePicker.getValue().toString()));
+                                                        TimeFunctions.createUtcDateTime(startHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()),
+                                                        TimeFunctions.createUtcDateTime(endHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()));
         
         if(AppointmentDao.verifyAppointmentExists(tempAppointment)) {
             return "Error: Appointment already exists";
@@ -112,37 +114,5 @@ public class AddAppointmentViewController extends BaseController implements Init
     
     private String missingFieldErrorGenerator(String field) {
         return "Error: Field '"+ field +"' is required";
-    }
-    
-    private int convertTimeComboToTime(String timeValue) {
-        switch(timeValue) {
-            case "9:00 AM":
-                return 9;
-            case "10:00 AM":
-                return 10;
-            case "11:00 AM":
-                return 11;
-            case "1:00 PM":
-                return 13;
-            case "2:00 PM":
-                return 14;
-            case "3:00 PM":
-                return 15;
-            case "4:00 PM":
-                return 16;
-            default:
-                return -1;
-        }
-    }
-    
-    private String createUtcDateTime(int hourValue, String dateValue) {
-        String chosenDate = String.format("%s %02d:%s", dateValue, hourValue, "00");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd kk:mm");
-        LocalDateTime localDateTime = LocalDateTime.parse(chosenDate, dateFormatter);
-        ZonedDateTime ldtZoned = localDateTime.atZone(ZoneId.systemDefault());
-        ZonedDateTime utcZoned = ldtZoned.withZoneSameInstant(ZoneOffset.UTC);
-        localDateTime = utcZoned.toLocalDateTime();
-        Timestamp timeStamp = Timestamp.valueOf(localDateTime);
-        return timeStamp.toString();
     }
 }

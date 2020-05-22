@@ -128,3 +128,14 @@ to far into it.
 ## Alerts
 
 - [ ] Make them as the spec asks you to
+
+
+## Misc Schtuffff
+
+- [ ] Validate on Add/Edit Appointment that one at that same time does not exist.
+
+- [ ] Make some on success of appointment creation
+
+- [ ] Appointment Deletion
+
+- [ ] Backward Navigation if on modifying a Customer/Appt

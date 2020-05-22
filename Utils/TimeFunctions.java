@@ -1,7 +1,12 @@
 package Utils;
 
-import java.text.ParseException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -25,15 +30,69 @@ public class TimeFunctions {
         return utcTime;
     }
     
-    public static Date convertStringtoDate(String date) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return sdf.parse(date);
+    public static String createUtcDateTime(int hourValue, String dateValue, String location) {
+        String chosenDate = String.format("%s %02d:%s", dateValue, hourValue, "00");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd kk:mm");
+        LocalDateTime localDateTime = LocalDateTime.parse(chosenDate, dateFormatter);
+        ZoneId modZoneId;
+        switch(location) {
+            case "Boise":
+                modZoneId = ZoneId.of("America/Phoenix");
+                break;
+            case "New York":
+                modZoneId = ZoneId.of("America/New_York");
+                break;
+            default:
+                //NOTE: this will NEEEEVER happen
+                modZoneId = ZoneId.of("America/Phoenix");
+                break;
+        }
+        ZonedDateTime ldtZoned = localDateTime.atZone(modZoneId);
+        ZonedDateTime utcZoned = ldtZoned.withZoneSameInstant(ZoneOffset.UTC);
+        localDateTime = utcZoned.toLocalDateTime();
+        Timestamp timeStamp = Timestamp.valueOf(localDateTime);
+        return timeStamp.toString();
     }
     
-    public static String convertDatetoString(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return sdf.format(date);
+    public static int convertTimeComboToTime(String timeValue) {
+        switch(timeValue) {
+            case "9:00 AM":
+                return 9;
+            case "10:00 AM":
+                return 10;
+            case "11:00 AM":
+                return 11;
+            case "1:00 PM":
+                return 13;
+            case "2:00 PM":
+                return 14;
+            case "3:00 PM":
+                return 15;
+            case "4:00 PM":
+                return 16;
+            default:
+                return -1;
+        }
     }
     
-    
+    public static String convertTimeToTimeCombo(int hourValue) {
+        switch(hourValue) {
+            case 9:
+                return "9:00 AM";
+            case 10:
+                return "10:00 AM";
+            case 11:
+                return "11:00 AM";
+            case 13:
+                return "1:00 PM";
+            case 14:
+                return "2:00 PM";
+            case 15:
+                return "3:00 PM";
+            case 16:
+                return "4:00 PM";
+            default:
+                return null;
+        }
+    }
 }
