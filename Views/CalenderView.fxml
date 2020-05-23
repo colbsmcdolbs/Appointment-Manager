@@ -15,7 +15,7 @@
    <children>
       <HBox layoutX="7.0" layoutY="7.0" prefHeight="48.0" prefWidth="367.0">
          <children>
-            <Label alignment="CENTER" prefHeight="48.0" prefWidth="430.0" text="Appointment Calendar">
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="225.0" text="Appointment Calendar">
                <font>
                   <Font size="18.0" />
                </font>
@@ -24,29 +24,37 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" onAction="#returnToDashboard" text="Return to Dashboard" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="25.0" prefWidth="134.0" text="Return to Dashboard" />
          </children>
       </HBox>
-      <HBox layoutX="182.0" layoutY="55.0" prefHeight="331.0" prefWidth="429.0">
+      <HBox layoutX="116.0" layoutY="55.0" prefHeight="331.0" prefWidth="495.0">
          <children>
-            <TableView prefHeight="318.0" prefWidth="450.0">
+            <TableView fx:id="appointmentTable" prefHeight="331.0" prefWidth="502.0">
               <columns>
-                <TableColumn prefWidth="118.0" text="Date" />
-                <TableColumn prefWidth="148.0" text="Customer" />
-                  <TableColumn prefWidth="87.0" text="Start" />
-                  <TableColumn prefWidth="96.0" text="End" />
+                <TableColumn fx:id="appointmentIdColumn" prefWidth="44.0" text="Apt ID" />
+                <TableColumn fx:id="customerIdColumn" prefWidth="59.0" text="Client ID" />
+                <TableColumn fx:id="locationNameColumn" prefWidth="103.0" text="Location" />
+                <TableColumn fx:id="typeNameColumn" prefWidth="108.0" text="Type" />
+                <TableColumn fx:id="startDateColumn" minWidth="6.0" prefWidth="95.0" text="Date" />
+                <TableColumn fx:id="endDateColumn" prefWidth="84.0" text="Start Time" />
               </columns>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </TableView>
          </children>
       </HBox>
-      <VBox layoutY="55.0" prefHeight="331.0" prefWidth="168.0">
+      <VBox layoutY="55.0" prefHeight="331.0" prefWidth="116.0">
          <children>
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="123.0" text="Week View">
+            <RadioButton fx:id="weekRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" prefHeight="17.0" prefWidth="123.0" text="Week View" textAlignment="CENTER">
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="5.0" top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="104.0" text="Month View" />
+            <RadioButton fx:id="monthRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" prefHeight="17.0" prefWidth="104.0" text="Month View" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin></RadioButton>
          </children>
       </VBox>
    </children>

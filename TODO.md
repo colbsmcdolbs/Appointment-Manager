@@ -69,7 +69,7 @@
 
 ### View Calendar Controller
 
-- [ ] Done
+- [X] Done
 
 
 ### Reports Controller
@@ -91,7 +91,7 @@
 You really should review the notes on the course chatter on this before you get
 to far into it.
 
-- [ ] Just make a table view for both. Super simple.
+- [X] Just make a table view for both. Super simple.
 
 ## TimeZone Nonsense
 

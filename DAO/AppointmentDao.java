@@ -7,6 +7,7 @@ import Utils.TimeFunctions;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -25,6 +26,43 @@ public class AppointmentDao {
         try {
             Statement connection = DBConnection.getConnection().createStatement();
             String appointmentQuery = "SELECT * FROM appointment;";
+            ResultSet appointmentResult = connection.executeQuery(appointmentQuery);
+            
+            ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+            
+            while(appointmentResult.next()) {
+                int appointmentId = appointmentResult.getInt("appointmentId");
+                int custId = appointmentResult.getInt("customerId");
+                int userId = appointmentResult.getInt("userId");
+                String location = appointmentResult.getString("location");
+                String contact = appointmentResult.getString("contact");
+                String type = appointmentResult.getString("type");
+                String start = appointmentResult.getString("start");
+                String end = appointmentResult.getString("end");
+                Appointment appointment = new Appointment(appointmentId, custId, userId, location, contact, type, start, end);
+                appointmentList.add(appointment);
+            }
+            
+            return appointmentList;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return null;
+        }
+    }
+    
+    /**
+     * Returns either the weekly or monthly appointments.
+     * @param isMonth - true -> month, false -> weeks
+     * @return list of all appointments
+     */
+    public static ObservableList<Appointment> getWeeklyMonthlyAppointments(boolean isMonth) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            LocalDate begin = LocalDate.now();
+            LocalDate endTime = isMonth ? LocalDate.now().plusMonths(1) : LocalDate.now().plusWeeks(1);
+            
+            String appointmentQuery = "SELECT * FROM appointment WHERE start >= '"+ begin +"' AND end <= '"+ endTime +"' ORDER BY start ASC;";
             ResultSet appointmentResult = connection.executeQuery(appointmentQuery);
             
             ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
