@@ -1,10 +1,11 @@
 package Models;
 
+import Utils.TimeFunctions;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 /**
  *
@@ -124,7 +125,23 @@ public class Appointment {
     }
     
     public String getStartTimeValue() {
-        return null;
+        Timestamp timestamp = Timestamp.valueOf(this.start);
+        ZonedDateTime zoneDateTime;
+        ZoneId zoneId;
+        LocalTime localTime;
+        if(this.location.equals("New York")) {
+            zoneId = ZoneId.of("America/New_York");
+            zoneDateTime = timestamp.toLocalDateTime().atZone(zoneId);
+            localTime = zoneDateTime.toLocalTime().minusHours(4);
+        } 
+        else {
+            zoneId = ZoneId.of("America/Phoenix");
+            zoneDateTime = timestamp.toLocalDateTime().atZone(zoneId);
+            localTime = zoneDateTime.toLocalTime().minusHours(7);
+        } 
+        int hour = Integer.parseInt(localTime.toString().split(":")[0]);
+        String time = TimeFunctions.convertTimeToTimeCombo(hour);
+        return time;
     }
     
     public LocalDate getDateValue() {

@@ -1,7 +1,6 @@
 package DAO;
 
 import Models.Appointment;
-import Models.Customer;
 import Models.User;
 import Utils.DBConnection;
 import Utils.TimeFunctions;
@@ -134,6 +133,20 @@ public class AppointmentDao {
             Statement connection = DBConnection.getConnection().createStatement();
             String customerQuery = "SELECT * FROM appointment WHERE customerId="+ appointment.getCustomerId() +" AND userId="+ appointment.getUserId() +" AND location='"+ appointment.getLocation()+
                                     "' AND contact='"+ appointment.getContact() +"' AND type='"+ appointment.getType()+"' AND start='"+ appointment.getStart() +"' AND end='"+ appointment.getEnd()+"';";
+            ResultSet customerResult = connection.executeQuery(customerQuery);
+            
+            return customerResult.next();
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return false;
+        }
+    }
+    
+    public static boolean verifyDuplicateAppointmentTimeExists(Appointment appointment) {
+        try {
+            Statement connection = DBConnection.getConnection().createStatement();
+            String customerQuery = "SELECT * FROM appointment WHERE start='"+ appointment.getStart() +"' AND location='"+ appointment.getLocation() +"';";
             ResultSet customerResult = connection.executeQuery(customerQuery);
             
             return customerResult.next();

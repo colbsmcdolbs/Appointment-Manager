@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -31,13 +32,14 @@ public class DashboardViewController implements Initializable {
     @FXML Rectangle reportsRect = new Rectangle();
     @FXML Rectangle calendarRect = new Rectangle();
     @FXML Button logOutButton = new Button();
+    @FXML Label welcomeLabel = new Label();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        welcomeLabel.setText("Welcome, " + SessionManager.getSessionUser().getUserName());
     }    
     
     @FXML

@@ -25,7 +25,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToAptList" fx:id="mainMenuButton" prefHeight="25.0" prefWidth="134.0" text="Return to All Appointments" />
+            <Button fx:id="mainMenuButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToAptList" prefHeight="25.0" prefWidth="172.0" text="Return to All Appointments" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">
@@ -37,7 +37,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" fx:id="locationChoiceBox" />
+                  <ChoiceBox fx:id="locationChoiceBox" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -53,7 +53,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" fx:id="contactChoiceBox" />
+                  <ChoiceBox fx:id="contactChoiceBox" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -69,7 +69,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" fx:id="typeChoiceBox" />
+                  <ChoiceBox fx:id="typeChoiceBox" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -85,7 +85,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <DatePicker prefHeight="25.0" prefWidth="179.0" fx:id="appointmentDatePicker" />
+                  <DatePicker fx:id="appointmentDatePicker" prefHeight="25.0" prefWidth="179.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -101,7 +101,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" fx:id="timeChoiceBox" />
+                  <ChoiceBox fx:id="timeChoiceBox" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -112,7 +112,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="216.0" prefHeight="0.0" prefWidth="289.0">
                <children>
-                  <Label textFill="RED" fx:id="errorLabel">
+                  <Label fx:id="errorLabel" textFill="RED">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
@@ -134,9 +134,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TableView prefHeight="304.0" prefWidth="272.0" fx:id="customerTable" >
+            <TableView fx:id="customerTable" prefHeight="304.0" prefWidth="272.0">
               <columns>
-                <TableColumn prefWidth="271.0" text="Customer Name" fx:id="customerNameColumn" />
+                <TableColumn fx:id="customerNameColumn" prefWidth="271.0" text="Customer Name" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" />
@@ -146,7 +146,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="379.0" layoutY="388.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" onAction="#modifyAppointment" text="Modify Appointment">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#modifyAppointment" prefHeight="48.0" prefWidth="160.0" text="Modify Appointment">
                <font>
                   <Font size="14.0" />
                </font>

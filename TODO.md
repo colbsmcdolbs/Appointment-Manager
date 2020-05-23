@@ -10,7 +10,7 @@
 
 - [X] Display all Customers as a popup and allow the user to pick which one they want to edit
 
-- [ ] Same for the appointments
+- [X] Same for the appointments
     
 - Options to access the following screens
 
@@ -64,7 +64,7 @@
 
 ### Edit Appt Controller
 
-- [ ] Done
+- [X] Done
 
 
 ### View Calendar Controller
@@ -98,11 +98,11 @@ to far into it.
 You really should review the notes on the course chatter on this before you get
 to far into it.
 
-- [ ] Probably a lot, not too sure yet.
+- [X] Probably a lot, not too sure yet.
 
 - [X] When making an appointment, translate time to UTC
 
-- [ ] When displaying appointments, translate times from UTC to local
+- [X] When displaying appointments, translate times from UTC to local
 
 
 
@@ -110,7 +110,7 @@ to far into it.
 
 - [X] Initial setup of static class
 
-- [ ] Once you have the GUI all ready, add in all the strings into the Map
+- [X] Once you have the GUI all ready, add in all the strings into the Map
 
 
 ## Reports
@@ -132,7 +132,7 @@ to far into it.
 
 ## Misc Schtuffff
 
-- [ ] Validate on Add/Edit Appointment that one at that same time does not exist.
+- [X] Validate on Add/Edit Appointment that one at that same time does not exist.
 
 - [ ] Make some on success of appointment creation
 

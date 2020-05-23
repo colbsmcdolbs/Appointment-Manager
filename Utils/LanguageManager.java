@@ -27,10 +27,12 @@ public class LanguageManager {
 
         //Spanish App Phrases
         addString("Spanish", "LoginWelcome", "Inicie sesión en el Administrador de Citas");
-
-        //French App Phrases
-        addString("French", "LoginWelcome", "Connectez-vous au Gestionnaire de Rendez-Vous");
-
+        addString("Spanish", "Login", "Conexion");
+        addString("Spanish", "Cancel", "Cancelar");
+        addString("Spanish", "Username", "Nombre de Usuario");
+        addString("Spanish", "Password", "Clave");
+        addString("Spanish", "AllFieldsError", "Error: Todos los campos son obligatorios");
+        addString("Spanish", "WrongUsernamePassError", "Error: Nombre de Usuario o Clave Incorrecta");
     }
     /**
      * To avoid any muckups, this will automatically set the system language to English.

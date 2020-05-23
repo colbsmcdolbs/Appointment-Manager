@@ -14,7 +14,7 @@
    <children>
       <HBox layoutX="7.0" layoutY="7.0" prefHeight="48.0" prefWidth="367.0">
          <children>
-            <Label alignment="CENTER" prefHeight="51.0" prefWidth="367.0" text="Welcome, User.Name">
+            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="51.0" prefWidth="367.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -23,7 +23,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="496.0" layoutY="14.0" prefHeight="35.0" prefWidth="94.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Log Out" onAction="#logOut">
+            <Button mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="64.0" text="Log Out">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
@@ -37,8 +37,8 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="DODGERBLUE" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneViewCalendar"/>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View Calendar" textAlignment="CENTER" wrappingWidth="87.89453125" onMouseClicked="#changeSceneViewCalendar">
+                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="DODGERBLUE" height="150.0" onMouseClicked="#changeSceneViewCalendar" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                  <Text fill="WHITE" onMouseClicked="#changeSceneViewCalendar" strokeType="OUTSIDE" strokeWidth="0.0" text="View Calendar" textAlignment="CENTER" wrappingWidth="87.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -50,12 +50,12 @@
             </StackPane>
             <StackPane layoutX="238.0" layoutY="10.0" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ee0000" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneAddAppointment">
+                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ee0000" height="150.0" onMouseClicked="#changeSceneAddAppointment" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Appointment" textAlignment="CENTER" wrappingWidth="134.89453125" onMouseClicked="#changeSceneAddAppointment">
+                  <Text fill="WHITE" onMouseClicked="#changeSceneAddAppointment" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Appointment" textAlignment="CENTER" wrappingWidth="134.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -70,12 +70,12 @@
             </StackPane>
             <StackPane layoutX="163.0" layoutY="10.0" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#00bb00" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneEditAppointment">
+                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#00bb00" height="150.0" onMouseClicked="#changeSceneEditAppointment" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Appointment" textAlignment="CENTER" wrappingWidth="139.89453125" onMouseClicked="#changeSceneEditAppointment">
+                  <Text fill="WHITE" onMouseClicked="#changeSceneEditAppointment" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Appointment" textAlignment="CENTER" wrappingWidth="139.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -94,8 +94,8 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle fx:id="addCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#cc00dd" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneAddCustomer"/>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Customer" textAlignment="CENTER" wrappingWidth="108.89453125" onMouseClicked="#changeSceneAddCustomer">
+                  <Rectangle fx:id="addCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#cc00dd" height="150.0" onMouseClicked="#changeSceneAddCustomer" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                  <Text fill="WHITE" onMouseClicked="#changeSceneAddCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Customer" textAlignment="CENTER" wrappingWidth="108.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -107,12 +107,12 @@
             </StackPane>
             <StackPane layoutX="238.0" layoutY="10.0" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle fx:id="editCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#00ccbb" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneEditCustomer">
+                  <Rectangle fx:id="editCustomerRect" arcHeight="25.0" arcWidth="25.0" fill="#00ccbb" height="150.0" onMouseClicked="#changeSceneEditCustomer" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Customer" textAlignment="CENTER" wrappingWidth="134.89453125" onMouseClicked="#changeSceneEditCustomer">
+                  <Text fill="WHITE" onMouseClicked="#changeSceneEditCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Customer" textAlignment="CENTER" wrappingWidth="134.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -127,12 +127,12 @@
             </StackPane>
             <StackPane layoutX="163.0" layoutY="10.0" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffa71f" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" onMouseClicked="#changeSceneReports">
+                  <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffa71f" height="150.0" onMouseClicked="#changeSceneReports" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View Reports" textAlignment="CENTER" wrappingWidth="139.89453125" onMouseClicked="#changeSceneReports">
+                  <Text fill="WHITE" onMouseClicked="#changeSceneReports" strokeType="OUTSIDE" strokeWidth="0.0" text="View Reports" textAlignment="CENTER" wrappingWidth="139.89453125">
                      <font>
                         <Font size="20.0" />
                      </font>

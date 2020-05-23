@@ -1,7 +1,6 @@
 package Controllers;
 
 import DAO.AppointmentDao;
-import DAO.CustomerDao;
 import Models.Appointment;
 import java.io.IOException;
 import java.net.URL;
@@ -46,8 +45,8 @@ public class AllAppointmentViewController extends BaseController implements Init
         appointmentIdColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
         locationNameColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         typeNameColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startDateColumn.setCellValueFactory(new PropertyValueFactory<>("start"));
-        endDateColumn.setCellValueFactory(new PropertyValueFactory<>("end"));
+        startDateColumn.setCellValueFactory(new PropertyValueFactory<>("DateValue"));
+        endDateColumn.setCellValueFactory(new PropertyValueFactory<>("StartTimeValue"));
         
         appointmentTable.setItems(appointments);
     }

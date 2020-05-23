@@ -32,7 +32,7 @@ import javafx.stage.Stage;
  *
  * @author colby
  */
-public class EditAppointmentViewController extends BaseController implements Initializable {
+public class EditAppointmentViewController implements Initializable {
 
     @FXML private ChoiceBox locationChoiceBox, timeChoiceBox, contactChoiceBox, typeChoiceBox;
     @FXML private DatePicker appointmentDatePicker = new DatePicker();
@@ -40,6 +40,7 @@ public class EditAppointmentViewController extends BaseController implements Ini
     @FXML private Button mainMenuButton = new Button();
     @FXML private TableView<Customer> customerTable;
     @FXML private TableColumn<Customer, String> customerNameColumn;
+    private int appointmentId;
     
     private ObservableList<Customer> customers;
     private ObservableList<String> timesList = FXCollections.observableArrayList("9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM");
@@ -66,6 +67,15 @@ public class EditAppointmentViewController extends BaseController implements Ini
         locationChoiceBox.getSelectionModel().select(appointment.getLocation());
         contactChoiceBox.getSelectionModel().select(appointment.getContact());
         typeChoiceBox.getSelectionModel().select(appointment.getType());
+        timeChoiceBox.getSelectionModel().select(appointment.getStartTimeValue());
+        appointmentDatePicker.setValue(appointment.getDateValue());
+        
+        int index = getCustomerIndexFromId(appointment.getCustomerId());
+        if(index != -1) {
+            this.customerTable.getSelectionModel().select(index);
+        }
+        
+        this.appointmentId = appointment.getAppointmentId();
     }
     
     @FXML
@@ -103,16 +113,16 @@ public class EditAppointmentViewController extends BaseController implements Ini
         int startHour = TimeFunctions.convertTimeComboToTime(timeChoiceBox.getValue().toString());
         int endHour = startHour + 1;
         
-        Appointment tempAppointment = new Appointment(-1, customerTable.getSelectionModel().getSelectedItem().getCustomerId(), SessionManager.getSessionUser().getUserId(),
+        Appointment tempAppointment = new Appointment(this.appointmentId, customerTable.getSelectionModel().getSelectedItem().getCustomerId(), SessionManager.getSessionUser().getUserId(),
                                                         locationChoiceBox.getValue().toString(), contactChoiceBox.getValue().toString(), typeChoiceBox.getValue().toString(),
                                                         TimeFunctions.createUtcDateTime(startHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()),
                                                         TimeFunctions.createUtcDateTime(endHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()));
         
-        if(AppointmentDao.verifyAppointmentExists(tempAppointment)) {
-            return "Error: Appointment already exists";
+        if(AppointmentDao.verifyDuplicateAppointmentTimeExists(tempAppointment)) {
+            return "Error: Appointment already scheduled at that time";
         }
-        if(!AppointmentDao.insertAppointment(tempAppointment, SessionManager.getSessionUser())) {
-            return "Error: Could not create Appointment";
+        if(!AppointmentDao.updateAppointment(tempAppointment, SessionManager.getSessionUser())) {
+            return "Error: Could not update Appointment";
         }
         
         return "Ok";
@@ -133,4 +143,12 @@ public class EditAppointmentViewController extends BaseController implements Ini
         return "Error: Field '"+ field +"' is required";
     }
     
+    private int getCustomerIndexFromId(int customerId) {
+        for(int i = 0; i < this.customers.size(); i++) {
+            if(customers.get(i).getCustomerId() == customerId) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

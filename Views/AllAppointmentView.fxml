@@ -34,8 +34,8 @@
                 <TableColumn fx:id="customerIdColumn" prefWidth="59.0" text="Client ID" />
                 <TableColumn fx:id="locationNameColumn" prefWidth="109.0" text="Location" />
                 <TableColumn fx:id="typeNameColumn" prefWidth="97.0" text="Type" />
-                <TableColumn fx:id="startDateColumn" prefWidth="108.0" text="Start" />
-                <TableColumn fx:id="endDateColumn" prefWidth="106.0" text="End" />
+                <TableColumn fx:id="startDateColumn" prefWidth="108.0" text="Date" />
+                <TableColumn fx:id="endDateColumn" prefWidth="106.0" text="Start Time" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" />

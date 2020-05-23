@@ -102,8 +102,8 @@ public class AddAppointmentViewController extends BaseController implements Init
                                                         TimeFunctions.createUtcDateTime(startHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()),
                                                         TimeFunctions.createUtcDateTime(endHour, appointmentDatePicker.getValue().toString(), locationChoiceBox.getValue().toString()));
         
-        if(AppointmentDao.verifyAppointmentExists(tempAppointment)) {
-            return "Error: Appointment already exists";
+        if(AppointmentDao.verifyDuplicateAppointmentTimeExists(tempAppointment)) {
+            return "Error: Appointment already scheduled at that time";
         }
         if(!AppointmentDao.insertAppointment(tempAppointment, SessionManager.getSessionUser())) {
             return "Error: Could not create Appointment";
