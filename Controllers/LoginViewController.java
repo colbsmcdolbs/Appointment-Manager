@@ -61,6 +61,8 @@ public class LoginViewController implements Initializable {
         loader.setLocation(getClass().getResource("/Views/DashboardView.fxml"));
         Parent addProductParent = loader.load();
         Scene addProductScene = new Scene(addProductParent);
+        DashboardViewController controller = loader.getController();
+        controller.checkForAppointments();
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(addProductScene);
         window.show();

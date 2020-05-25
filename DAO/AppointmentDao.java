@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -109,6 +113,32 @@ public class AppointmentDao {
                 String end = appointmentResult.getString("end");
                 Appointment appointment = new Appointment(appointmentId, custId, userId, location, contact, type, start, end);
                 return appointment;
+            }
+            
+            return null;
+        }
+        catch(SQLException e) {
+            System.err.println(e.getLocalizedMessage());
+            return null;
+        }
+    }
+    
+    public static String checkAppointmentIn15Minutes() {
+        try {
+            LocalDateTime currentTime = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.systemDefault();
+            ZonedDateTime zonedDateTime = currentTime.atZone(zoneId);
+            LocalDateTime utcStart = zonedDateTime.withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
+            LocalDateTime utcEnd = utcStart.plusMinutes(15);
+            
+            Statement connection = DBConnection.getConnection().createStatement();
+            String appointmentQuery = "SELECT * FROM appointment a INNER JOIN customer c USING(customerId) WHERE start BETWEEN '" + 
+                                        utcStart+"' AND '"+ utcEnd +"';";
+            ResultSet appointmentResult = connection.executeQuery(appointmentQuery);
+            if(appointmentResult.next()) {
+                String result = String.format("%s has an appointment with %s regarding %s within the next 15 minutes", 
+                                                appointmentResult.getString("contact"), appointmentResult.getString("customerName"), appointmentResult.getString("type"));
+                return result;
             }
             
             return null;

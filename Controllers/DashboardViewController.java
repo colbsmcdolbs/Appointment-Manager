@@ -1,5 +1,6 @@
 package Controllers;
 
+import DAO.AppointmentDao;
 import Utils.SessionManager;
 import java.io.IOException;
 import java.net.URL;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +35,8 @@ public class DashboardViewController implements Initializable {
     @FXML Rectangle calendarRect = new Rectangle();
     @FXML Button logOutButton = new Button();
     @FXML Label welcomeLabel = new Label();
+    
+    @FXML private Alert appointmentAlert = new Alert(Alert.AlertType.INFORMATION);
 
     /**
      * Initializes the controller class.
@@ -41,6 +45,16 @@ public class DashboardViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         welcomeLabel.setText("Welcome, " + SessionManager.getSessionUser().getUserName());
     }    
+    
+    public void checkForAppointments() {
+        String result = AppointmentDao.checkAppointmentIn15Minutes();
+        if(result != null) {
+            appointmentAlert.setTitle("Upcoming appointment!");
+            appointmentAlert.setHeaderText("An appointment will be arriving soon.");
+            appointmentAlert.setContentText(result);
+            appointmentAlert.showAndWait();
+        }
+    }
     
     @FXML
     private void changeSceneAddAppointment(MouseEvent event) throws IOException {
