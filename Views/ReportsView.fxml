@@ -35,12 +35,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox prefWidth="150.0">
+            <ChoiceBox prefWidth="150.0" fx:id="reportsChoiceBox">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </ChoiceBox>
-            <Button mnemonicParsing="false" text="Generate Report">
+            <Button mnemonicParsing="false" text="Generate Report" onAction="#generateReport">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

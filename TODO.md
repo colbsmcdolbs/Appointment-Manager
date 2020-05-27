@@ -127,7 +127,7 @@ to far into it.
 
 ## Alerts
 
-- [ ] Make them as the spec asks you to
+- [X] Make them as the spec asks you to
 
 
 ## Misc Schtuffff

@@ -39,10 +39,7 @@ public class LanguageManager {
      */
     private static void initializeUserLanguage() {
         switch(Locale.getDefault().getLanguage()) {
-            case "fr":
-                userLanguage = "French";
-                break;
-            case "sp":
+            case "es":
                 userLanguage = "Spanish";
                 break;
             default:
