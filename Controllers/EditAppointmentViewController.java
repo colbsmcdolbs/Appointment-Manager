@@ -2,6 +2,7 @@ package Controllers;
 
 import DAO.AppointmentDao;
 import DAO.CustomerDao;
+import Interfaces.IIndexLoop;
 import Models.Appointment;
 import Models.Customer;
 import Utils.SessionManager;
@@ -70,7 +71,16 @@ public class EditAppointmentViewController implements Initializable {
         timeChoiceBox.getSelectionModel().select(appointment.getStartTimeValue());
         appointmentDatePicker.setValue(appointment.getDateValue());
         
-        int index = getCustomerIndexFromId(appointment.getCustomerId());
+        //HELLO THIS IS MY LAMBDA FUNCTION #1
+        IIndexLoop loop = (id) -> {
+            for(int i = 0; i < this.customers.size(); i++) {
+                if(customers.get(i).getCustomerId() == id) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+        int index = loop.getIndexFromId(appointment.getCustomerId());
         if(index != -1) {
             this.customerTable.getSelectionModel().select(index);
         }
@@ -141,14 +151,5 @@ public class EditAppointmentViewController implements Initializable {
     
     private String missingFieldErrorGenerator(String field) {
         return "Error: Field '"+ field +"' is required";
-    }
-    
-    private int getCustomerIndexFromId(int customerId) {
-        for(int i = 0; i < this.customers.size(); i++) {
-            if(customers.get(i).getCustomerId() == customerId) {
-                return i;
-            }
-        }
-        return -1;
     }
 }

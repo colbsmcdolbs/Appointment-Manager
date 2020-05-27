@@ -2,6 +2,8 @@ package Controllers;
 
 import DAO.CountryCityDao;
 import DAO.CustomerDao;
+import Interfaces.IErrorGenerator;
+import Interfaces.IIndexLoop;
 import Models.Address;
 import Models.City;
 import Models.Customer;
@@ -74,7 +76,16 @@ public class EditCustomerViewController extends BaseController implements Initia
         this.postalCodeTextField.setText(tempAddress.getPostalCode());
         this.phoneTextField.setText(tempAddress.getPostalCode());
         
-        int cityId = getCityIndexFromId(tempAddress.getCityId());
+        //HELLO THIS IS MY LAMBDA FUNCTION #1
+        IIndexLoop loop = (id) -> {
+            for(int i = 0; i < this.cities.size(); i++) {
+                if(cities.get(i).getCityId() == id) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+        int cityId = loop.getIndexFromId(tempAddress.getCityId());
         if(cityId != -1) {
             this.cityTable.getSelectionModel().select(cityId);
         }
@@ -103,23 +114,26 @@ public class EditCustomerViewController extends BaseController implements Initia
     }
     
     private String validateCustomer() {
+        // I AM THE SECOND LAMBDA FUNCTION
+        IErrorGenerator gen = (field) -> { return "Error: '" + field + "' is a required field"; };
+        
         if(this.customerNameTextField.getText().isEmpty()) {
-            return errorGeneratorMissing("Customer Name");
+            return gen.createMissingFieldError("Customer Name");
         }
         if(this.addressTextField.getText().isEmpty()) {
-            return errorGeneratorMissing("Address");
+            return gen.createMissingFieldError("Address");
         }
         if(this.address2TextField.getText().isEmpty()) {
-            return errorGeneratorMissing("Address 2");
+            return gen.createMissingFieldError("Address 2");
         }
         if(this.postalCodeTextField.getText().isEmpty()) {
-            return errorGeneratorMissing("Postal Code");
+            return gen.createMissingFieldError("Postal Code");
         }
         if(this.phoneTextField.getText().isEmpty()) {
-            return errorGeneratorMissing("Phone");
+            return gen.createMissingFieldError("Phone");
         }
         if(this.cityTable.getSelectionModel().isEmpty()) {
-            return errorGeneratorMissing("City");
+            return gen.createMissingFieldError("City");
         }
         
         //validate all address portions are ok
@@ -166,21 +180,7 @@ public class EditCustomerViewController extends BaseController implements Initia
         return "Ok";
     }
     
-    private String errorGeneratorMissing(String field) {
-        return "Error: '"+ field +"' is a required field";
-    }
-    
     private String errorGeneratorExceedsLength(String field, int maxLength) {
         return "Error: '"+ field +"' is too long. Max Length: "+ maxLength;
     }
-    
-    private int getCityIndexFromId(int cityId) {
-        for(int i = 0; i < this.cities.size(); i++) {
-            if(cities.get(i).getCityId() == cityId) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    
 }
