@@ -3,6 +3,7 @@ package Models;
 import Utils.TimeFunctions;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -126,22 +127,28 @@ public class Appointment {
     
     public String getStartTimeValue() {
         Timestamp timestamp = Timestamp.valueOf(this.start);
-        ZonedDateTime zoneDateTime;
+        ZonedDateTime zoneDateTime = timestamp.toLocalDateTime().atZone(ZoneId.of("UTC"));
         ZoneId zoneId;
-        LocalTime localTime;
         if(this.location.equals("New York")) {
             zoneId = ZoneId.of("America/New_York");
-            zoneDateTime = timestamp.toLocalDateTime().atZone(zoneId);
-            localTime = zoneDateTime.toLocalTime().minusHours(4);
         } 
         else {
-            zoneId = ZoneId.of("America/Phoenix");
-            zoneDateTime = timestamp.toLocalDateTime().atZone(zoneId);
-            localTime = zoneDateTime.toLocalTime().minusHours(7);
-        } 
+            zoneId = ZoneId.of("America/Denver");
+        }
+        ZonedDateTime localZoneDateTime = zoneDateTime.withZoneSameInstant(zoneId);
+        LocalTime localTime = localZoneDateTime.toLocalTime();
         int hour = Integer.parseInt(localTime.toString().split(":")[0]);
         String time = TimeFunctions.convertTimeToTimeCombo(hour);
         return time;
+    }
+    
+    public String getSystemLocalStartTimeValue() {
+        Timestamp timestamp = Timestamp.valueOf(this.start);
+        ZonedDateTime zoneDateTime = timestamp.toLocalDateTime().atZone(ZoneId.of("UTC"));
+        ZonedDateTime localZoneDateTime = zoneDateTime.withZoneSameInstant(ZoneId.of(ZoneId.systemDefault().toString()));
+        LocalTime localTime = localZoneDateTime.toLocalTime();
+        int hour = Integer.parseInt(localTime.toString().split(":")[0]);
+        return TimeFunctions.convertTimeToTimeCombo(hour);
     }
     
     public LocalDate getDateValue() {
@@ -151,11 +158,11 @@ public class Appointment {
             zoneId = ZoneId.of("America/New_York");
         } 
         else if(this.location.equals("Boise")) {
-            zoneId = ZoneId.of("America/Phoenix");
+            zoneId = ZoneId.of("America/Denver");
         } 
         else {
             //NOTE: This wont happen evahh
-            zoneId = ZoneId.of("America/Phoenix");
+            zoneId = ZoneId.of("America/Denver");
         }
         ZonedDateTime zoneDateTime = timestamp.toLocalDateTime().atZone(zoneId);
         LocalDate localDate = zoneDateTime.toLocalDate();

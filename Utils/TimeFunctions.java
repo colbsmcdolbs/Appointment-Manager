@@ -37,14 +37,14 @@ public class TimeFunctions {
         ZoneId modZoneId;
         switch(location) {
             case "Boise":
-                modZoneId = ZoneId.of("America/Phoenix");
+                modZoneId = ZoneId.of("America/Denver");
                 break;
             case "New York":
                 modZoneId = ZoneId.of("America/New_York");
                 break;
             default:
                 //NOTE: this will NEEEEVER happen
-                modZoneId = ZoneId.of("America/Phoenix");
+                modZoneId = ZoneId.of("America/Denver");
                 break;
         }
         ZonedDateTime ldtZoned = localDateTime.atZone(modZoneId);
@@ -77,12 +77,30 @@ public class TimeFunctions {
     
     public static String convertTimeToTimeCombo(int hourValue) {
         switch(hourValue) {
+            case 1:
+                return "1:00 AM";
+            case 2:
+                return "2:00 AM";
+            case 3:
+                return "3:00 AM";
+            case 4:
+                return "4:00 AM";
+            case 5:
+                return "5:00 AM";
+            case 6:
+                return "6:00 AM";
+            case 7:
+                return "7:00 AM";
+            case 8:
+                return "8:00 AM";
             case 9:
                 return "9:00 AM";
             case 10:
                 return "10:00 AM";
             case 11:
                 return "11:00 AM";
+            case 12:
+                return "12:00 PM";
             case 13:
                 return "1:00 PM";
             case 14:
@@ -91,6 +109,22 @@ public class TimeFunctions {
                 return "3:00 PM";
             case 16:
                 return "4:00 PM";
+            case 17:
+                return "5:00 PM";
+            case 18:
+                return "6:00 PM";
+            case 19:
+                return "7:00 PM";
+            case 20:
+                return "8:00 PM";
+            case 21:
+                return "9:00 PM";
+            case 22:
+                return "10:00 PM";
+            case 23:
+                return "11:00 PM";
+            case 0:
+                return "12:00 AM";
             default:
                 return null;
         }

@@ -74,9 +74,11 @@ public class EditCustomerViewController extends BaseController implements Initia
         this.addressTextField.setText(tempAddress.getAddress1());
         this.address2TextField.setText(tempAddress.getAddress2());
         this.postalCodeTextField.setText(tempAddress.getPostalCode());
-        this.phoneTextField.setText(tempAddress.getPostalCode());
+        this.phoneTextField.setText(tempAddress.getPhoneNumber());
         
         //HELLO THIS IS MY LAMBDA FUNCTION #1
+        //I converted this to a lambda function as I used an extremely similar method on EditAppointmentViewController.java
+        //on line 74. Converting it to a lambda allowed me to use
         IIndexLoop loop = (id) -> {
             for(int i = 0; i < this.cities.size(); i++) {
                 if(cities.get(i).getCityId() == id) {
@@ -85,6 +87,7 @@ public class EditCustomerViewController extends BaseController implements Initia
             }
             return -1;
         };
+        
         int cityId = loop.getIndexFromId(tempAddress.getCityId());
         if(cityId != -1) {
             this.cityTable.getSelectionModel().select(cityId);
@@ -115,6 +118,8 @@ public class EditCustomerViewController extends BaseController implements Initia
     
     private String validateCustomer() {
         // I AM THE SECOND LAMBDA FUNCTION
+        // This lambda function eliminates the code duplication of the private method in the class
+        // It generates errors extremely quickly, as these anonymous functions are loved by the compiler.
         IErrorGenerator gen = (field) -> { return "Error: '" + field + "' is a required field"; };
         
         if(this.customerNameTextField.getText().isEmpty()) {
