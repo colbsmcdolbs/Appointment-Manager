@@ -51,6 +51,7 @@ public class EditCustomerViewController extends BaseController implements Initia
     @FXML private TableColumn<City, String> cityNameColumn;
     @FXML private TableViewFocusModel<TableView<City>> focusedCity;
     private ObservableList<City> cities;
+    private int customerId;
     
     /**
      * Initializes the controller class.
@@ -69,7 +70,7 @@ public class EditCustomerViewController extends BaseController implements Initia
     
     public void initData(Customer customer) {
         Address tempAddress = CustomerDao.getAddressById(customer.getAddressId());
-        
+        this.customerId = customer.getCustomerId();
         this.customerNameTextField.setText(customer.getCustomerName());
         this.addressTextField.setText(tempAddress.getAddress1());
         this.address2TextField.setText(tempAddress.getAddress2());
@@ -169,7 +170,7 @@ public class EditCustomerViewController extends BaseController implements Initia
         }
         
         //add customer to db
-        Customer tempCustomer = new Customer(-1, this.customerNameTextField.getText(), tempAddressId);
+        Customer tempCustomer = new Customer(this.customerId, this.customerNameTextField.getText(), tempAddressId);
         if(CustomerDao.verifyCustomerExists(tempCustomer)) {
             return "Error: Specified Customer Already Exists in Database";
         }

@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToCustomerList" prefHeight="25.0" prefWidth="176.0" text="Return to Customer List" />
+            <Button alignment="CENTER" mnemonicParsing="false" fx:id="exitButton" onAction="#returnToCustomerList" prefHeight="25.0" prefWidth="176.0" text="Return to Customer List" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">

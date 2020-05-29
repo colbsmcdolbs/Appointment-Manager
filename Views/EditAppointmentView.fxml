@@ -25,7 +25,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="402.0" prefHeight="48.0" prefWidth="192.0">
          <children>
-            <Button fx:id="mainMenuButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToAptList" prefHeight="25.0" prefWidth="172.0" text="Return to All Appointments" />
+            <Button alignment="CENTER" mnemonicParsing="false" fx:id="mainMenuButton" onAction="#returnToAptList" prefHeight="25.0" prefWidth="172.0" text="Return to All Appointments" />
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="7.0" layoutY="70.0" prefHeight="318.0" prefWidth="289.0">

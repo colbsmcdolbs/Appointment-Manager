@@ -96,7 +96,8 @@ public class CustomerDao {
             String currentSQLTime = TimeFunctions.getCurrentDateTimeUTCForDatabase();
             String updateCustomerQuery = "UPDATE customer SET customerName='"+ customer.getCustomerName() +"', addressId="+ customer.getAddressId() +", lastUpdate='"+ currentSQLTime +
                                             "', lastUpdateBy='"+ user.getUserName() +"' WHERE customerId="+ customer.getCustomerId() +";"; 
-            return connection.execute(updateCustomerQuery);
+            connection.execute(updateCustomerQuery);
+            return true;
         }
         catch(SQLException e) {
             System.err.println(e.getLocalizedMessage());
