@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The purpose of this project is an MVP of an Appointment Manager that a business would need in order to schedule appointments with customers.
+This project is an MVC (Model View Controller) graphical application built with Java using JavaFX. The purpose of this project is an Minimum Viable Product of an Appointment Manager that a business would need in order to schedule appointments with customers.
 
 It contains the features to:
 
@@ -40,7 +40,9 @@ Import the project into an IDE of your choice (further instructions will be give
 In Netbeans. File -> Import Project -> From Zip... -> (Select the .zip file you downloaded) -> Import
 
 
-### Add the External Library for JDBC
+### Add the External Library for JDBC**
+
+**This step might not be necessary, but if the libraries don't automatically load. Follow the steps below.
 
 Right Click on Project (Coffee Cup on left side of screen) -> Properties -> Libraries -> Add Library... -> (Find "MYSQL JDBC DRIVER") Select "Add Library"
 
@@ -51,3 +53,6 @@ Click the Green Play button at the top of the IDE to run the project. Use the fo
 
 * Username: test
 * Password: test
+
+
+If you find any errors in this project or the setup, please do not feel afraid to submit an issue or create a Pull Request. Thank you!
